@@ -5,7 +5,8 @@ Um aplicativo web desenvolvido com **Streamlit** e **Google Gemini** para gerenc
 Em vez de apenas registrar produtos, o sistema analisa o histórico de compras para prever quando cada item deverá ser comprado novamente, ajudando o usuário a planejar suas idas ao mercado.
 
 > **Status:** ✅ Finalizado
-> Projeto desenvolvido para fins de estudo e experimentação com Inteligência Artificial Generativa, análise de dados, autenticação web e desenvolvimento de aplicações em Python.
+
+Projeto desenvolvido para fins de estudo e experimentação com Inteligência Artificial Generativa, análise de dados, autenticação web e desenvolvimento de aplicações em Python.
 
 ---
 
