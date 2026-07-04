@@ -1,85 +1,178 @@
-🛒 Lista de Compras Inteligente
+# 🛒 Lista de Compras Inteligente
 
-Este é um projeto de aplicativo web construído com Streamlit e Inteligência Artificial (Google Gemini) para gerenciar compras de mercado. O objetivo principal do aplicativo não é apenas registrar produtos, mas sim analisar o histórico de compras para prever e recomendar o que precisa ser comprado antes de ir ao mercado.
+Um aplicativo web desenvolvido com **Streamlit** e **Google Gemini** para gerenciar compras de mercado de forma inteligente.
 
-Status do Projeto: Finalizado. Este projeto foi desenvolvido para fins de estudo e experimentação com IA generativa, processamento de dados e autenticação web.
+Em vez de apenas registrar produtos, o sistema analisa o histórico de compras para prever quando cada item deverá ser comprado novamente, ajudando o usuário a planejar suas idas ao mercado.
 
-🚀 Funcionalidades
+> **Status:** ✅ Finalizado
+> Projeto desenvolvido para fins de estudo e experimentação com Inteligência Artificial Generativa, análise de dados, autenticação web e desenvolvimento de aplicações em Python.
 
-Recomendação Inteligente: Calcula a média de dias entre as compras de cada produto e avisa se está na hora de comprar novamente, com base em quantos dias o usuário pretende ficar sem ir ao mercado.
+---
 
-Leitura de Nota Fiscal com IA: Permite o upload de imagens de notas fiscais (PNG/JPEG). O Google Gemini Vision analisa a imagem, extrai os itens comprados e seus valores, e os formata automaticamente para o banco de dados.
+# 🚀 Funcionalidades
 
-Importação em Lote: Suporte para upload de histórico de compras via arquivos .csv.
+* 🧠 **Recomendação Inteligente**
 
-Inserção Manual: Interface simples para adicionar produtos e valores individualmente.
+  * Calcula a média de dias entre as compras de cada produto.
+  * Recomenda quais itens precisam ser comprados novamente com base no período informado pelo usuário.
 
-Autenticação Segura: Login integrado utilizando Google OAuth 2.0 de forma nativa pelo Streamlit.
+* 🧾 **Leitura de Nota Fiscal com IA**
 
-Banco de Dados Local: Armazenamento do histórico em banco de dados SQLite, gerenciado via SQLAlchemy.
+  * Upload de imagens nos formatos **PNG** e **JPEG**.
+  * Utiliza o **Google Gemini Vision** para identificar automaticamente os produtos e seus respectivos preços.
 
-🛠️ Tecnologias Utilizadas
+* 📂 **Importação em Lote**
 
-Python 3
+  * Importação do histórico de compras através de arquivos **CSV**.
 
-Streamlit (Interface gráfica web e Autenticação OAuth)
+* ✍️ **Cadastro Manual**
 
-Pandas (Tratamento e análise dos dados)
+  * Permite adicionar produtos individualmente pela interface.
 
-SQLAlchemy & SQLite (Modelagem e banco de dados relacional)
+* 🔐 **Autenticação**
 
-Google GenAI API (Extração de dados de imagens de Notas Fiscais)
+  * Login utilizando **Google OAuth 2.0** integrado ao Streamlit.
 
-📁 Estrutura do Projeto
+* 💾 **Banco de Dados**
 
-main.py: Arquivo principal da aplicação Streamlit que contém a interface e a lógica de negócios.
+  * Armazenamento do histórico em **SQLite**, utilizando **SQLAlchemy**.
 
-gen_ai.py: Módulo responsável por fazer a comunicação com a API do Google Gemini e extrair os dados das imagens.
+---
 
-database.db: Banco de dados SQLite contendo a tabela de histórico de compras.
+# 🛠️ Tecnologias Utilizadas
 
-query_inteligente.sql: Script SQL com CTEs complexas para calcular a diferença de dias, médias de valores e gerar os dados estatísticos dos produtos.
+* Python 3
+* Streamlit
+* Pandas
+* SQLAlchemy
+* SQLite
+* Google Gemini API
 
-prompt_template.md: Template do prompt enviado ao Gemini para instruí-lo a extrair os dados da nota fiscal no formato correto.
+---
 
-resposta_template.json: Estrutura de dados esperada como retorno da IA.
+# 📁 Estrutura do Projeto
 
-requirements.txt: Lista de dependências do projeto.
+```text
+📦 Lista-de-Compras-Inteligente
+│
+├── main.py
+├── gen_ai.py
+├── database.db
+├── query_inteligente.sql
+├── prompt_template.md
+├── resposta_template.json
+├── requirements.txt
+├── .env
+└── .streamlit/
+    └── secrets.toml
+```
 
-.streamlit/secrets.toml: Arquivo de configuração de credenciais OAuth (não versionado).
+### Descrição dos arquivos
 
-.env: Arquivo de variáveis de ambiente contendo a chave da API da IA (não versionado).
+| Arquivo                   | Descrição                                                              |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `main.py`                 | Interface principal da aplicação e lógica de negócio.                  |
+| `gen_ai.py`               | Comunicação com a API do Google Gemini para leitura das notas fiscais. |
+| `database.db`             | Banco de dados SQLite com o histórico de compras.                      |
+| `query_inteligente.sql`   | Consulta SQL responsável pelos cálculos estatísticos e recomendações.  |
+| `prompt_template.md`      | Prompt utilizado para instruir o Gemini.                               |
+| `resposta_template.json`  | Modelo esperado da resposta da IA.                                     |
+| `requirements.txt`        | Dependências do projeto.                                               |
+| `.env`                    | Chave da API do Gemini (não versionado).                               |
+| `.streamlit/secrets.toml` | Configuração do OAuth do Google (não versionado).                      |
 
-⚙️ Como executar o projeto localmente
+---
 
-Clone este repositório.
+# ⚙️ Como executar o projeto
 
-Crie um ambiente virtual e ative-o:
+## 1. Clone o repositório
 
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd <NOME_DO_REPOSITORIO>
+```
+
+---
+
+## 2. Crie um ambiente virtual
+
+### Windows
+
+```bash
 python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-.venv\Scripts\activate     # Windows
 
+.venv\Scripts\activate
+```
 
-Instale as dependências:
+### Linux / macOS
 
+```bash
+python -m venv .venv
+
+source .venv/bin/activate
+```
+
+---
+
+## 3. Instale as dependências
+
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-Configure as variáveis de ambiente:
+## 4. Configure a API do Google Gemini
 
-Crie um arquivo .env na raiz do projeto e adicione sua chave de API do Gemini:
+Crie um arquivo `.env` na raiz do projeto:
 
+```env
 GEMINI_API_KEY=sua_chave_aqui
+```
 
+---
 
-Crie o arquivo .streamlit/secrets.toml para o OAuth do Google:
+## 5. Configure o Google OAuth
 
+Crie o arquivo:
+
+```text
+.streamlit/secrets.toml
+```
+
+Conteúdo:
+
+```toml
 [auth]
 redirect_uri = "http://localhost:8501/oauth2callback"
 client_id = "seu_client_id_do_google_cloud.apps.googleusercontent.com"
+```
 
+---
 
-Inicie a aplicação:
+## 6. Execute a aplicação
 
+```bash
 streamlit run main.py
+```
+
+---
+
+# 📌 Objetivos de Aprendizagem
+
+Este projeto foi desenvolvido para praticar:
+
+* Desenvolvimento de aplicações web com Streamlit;
+* Integração com modelos de IA Generativa;
+* Processamento de imagens utilizando Google Gemini Vision;
+* Manipulação e análise de dados com Pandas;
+* Consultas SQL utilizando CTEs;
+* Persistência de dados com SQLite e SQLAlchemy;
+* Autenticação com Google OAuth 2.0;
+* Organização de projetos Python.
+
+---
+
+# 📄 Licença
+
+Este projeto foi desenvolvido exclusivamente para fins de estudo e aprendizado.
