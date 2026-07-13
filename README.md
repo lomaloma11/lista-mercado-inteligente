@@ -177,3 +177,12 @@ Este projeto foi desenvolvido para praticar:
 # 📄 Licença
 
 Este projeto foi desenvolvido exclusivamente para fins de estudo e aprendizado.
+
+---
+
+# Referências
+
+Este projeto foi desenvolvido com base nos conteúdos educacionais do Téo Calvo (Téo Me Why).
+
+   * Canal no YouTube: Téo Me Why
+
